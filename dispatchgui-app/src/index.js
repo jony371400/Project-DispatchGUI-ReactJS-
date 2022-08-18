@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
-
 import './Asset/home-layout.css';
-
 import './Asset/graph-layout.css';
 import './Asset/graph-component.css';
-
 import './Asset/control-layout.css';
 import './Asset/control-component.css';
 
