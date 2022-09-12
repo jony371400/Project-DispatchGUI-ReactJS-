@@ -1,34 +1,23 @@
+import React, { useState } from 'react';
+
 const Control = () => {
-    function buttonclick() {
-        // let acc = document.getElementsByClassName("accordion");
-        // // let panel = document.getElementsByClassName("panel");
+    const [isActive1, setIsActive1] = useState(false);
+    const [isActive2, setIsActive2] = useState(false);
 
-        // let i = 0
-        // console.log(1234)
-        // for (i = 0; i < acc.length; i++) {
-        //     acc.addEventListener("click", function () {
-        //         this.classList.toggle("active");
-        //         let panel = this.nextElementSibling;
+    const handleClick1 = () => {
+        setIsActive1(current => !current);
+        console.log('isActive1 : ' , isActive1)
+    };
 
-        //         if (panel.style.maxHeight !== "0px") {
-        //             panel.style.maxHeight = "0px";
-        //         } else {
-        //             panel.style.maxHeight = "340px";
-        //         }
-
-        //         var s = panel.style.maxHeight
-        //         console.log(s)
-        //     });
-        // }
-    }
+    const handleClick2 = () => {
+        setIsActive2(current => !current);
+        console.log('isActive2 : ' , isActive2)
+    };
 
     return (
-
         <div className="item_sendmsg">
-
-            <button className="accordion" onClick={buttonclick} >Taxi Service</button>
-
-            <div className="panel">
+            <button className="accordion" onClick={handleClick1}>Taxi Service</button>
+            <div >
                 <div className="sendarea">Choose AMR : </div>
 
                 <select className="combobox" id="AMRs_taxi">
@@ -60,8 +49,8 @@ const Control = () => {
                 <button >Start</button>
             </div>
 
-            <button className="accordion">Charge Service</button>
-            <div className="panel">
+            <button className="accordion" onClick={handleClick2} >Charge Service</button>
+            <div>
                 <div className="sendarea">Choose AMR : </div>
 
                 <select className="combobox" id="AMRs_charge">
@@ -82,9 +71,7 @@ const Control = () => {
 
                 <button >Start</button>
             </div>
-
         </div>
-
     );
 };
 
