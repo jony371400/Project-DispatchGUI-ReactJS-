@@ -6,18 +6,18 @@ const Control = () => {
 
     const handleClick1 = () => {
         setIsActive1(current => !current);
-        console.log('isActive1 : ' , isActive1)
+        console.log('isActive1 : ', isActive1)
     };
 
     const handleClick2 = () => {
         setIsActive2(current => !current);
-        console.log('isActive2 : ' , isActive2)
+        console.log('isActive2 : ', isActive2)
     };
 
     return (
         <div className="item_sendmsg">
             <button className="accordion" onClick={handleClick1}>Taxi Service</button>
-            <div >
+            <div style={{ display: isActive1 ? 'block' : 'none' }}>
                 <div className="sendarea">Choose AMR : </div>
 
                 <select className="combobox" id="AMRs_taxi">
@@ -49,8 +49,10 @@ const Control = () => {
                 <button >Start</button>
             </div>
 
+            
+
             <button className="accordion" onClick={handleClick2} >Charge Service</button>
-            <div>
+            <div style={{ display: isActive2 ? 'block' : 'none' }}>
                 <div className="sendarea">Choose AMR : </div>
 
                 <select className="combobox" id="AMRs_charge">

@@ -1,113 +1,141 @@
+import React, { useState, useEffect } from 'react';
+
 const Graph = () => {
 
-    //#region 
-    let startpos = document.getElementById('start')
+    //#region Old Method to Chage CSS 
+    // let startpos = document.getElementById('start')
 
-    let store1 = document.getElementById('store1')
-    let store2 = document.getElementById('store2')
-    let store3 = document.getElementById('store3')
+    // let store1 = document.getElementById('store1')
+    // let store2 = document.getElementById('store2')
+    // let store3 = document.getElementById('store3')
 
-    let A1 = document.getElementById('A1')
-    let A2 = document.getElementById('A2')
-    let B1 = document.getElementById('B1')
-    let B2 = document.getElementById('B2')
-    let B3 = document.getElementById('B3')
-    let C1 = document.getElementById('C1')
-    let C2 = document.getElementById('C2')
-    let C3 = document.getElementById('C3')
+    // let A1 = document.getElementById('A1')
+    // let A2 = document.getElementById('A2')
+    // let B1 = document.getElementById('B1')
+    // let B2 = document.getElementById('B2')
+    // let B3 = document.getElementById('B3')
+    // let C1 = document.getElementById('C1')
+    // let C2 = document.getElementById('C2')
+    // let C3 = document.getElementById('C3')
 
-    let P11 = document.getElementById('p1-1')
-    let P12 = document.getElementById('p1-2')
-    let P13 = document.getElementById('p1-3')
-    let P14 = document.getElementById('p1-4')
-    let P15 = document.getElementById('p1-5')
-    let P16 = document.getElementById('p1-6')
-    let P17 = document.getElementById('p1-7')
+    // let P11 = document.getElementById('p1-1')
+    // let P12 = document.getElementById('p1-2')
+    // let P13 = document.getElementById('p1-3')
+    // let P14 = document.getElementById('p1-4')
+    // let P15 = document.getElementById('p1-5')
+    // let P16 = document.getElementById('p1-6')
+    // let P17 = document.getElementById('p1-7')
 
-    let P21 = document.getElementById('p2-1')
-    let P22 = document.getElementById('p2-2')
-    let P23 = document.getElementById('p2-3')
-    let P24 = document.getElementById('p2-4')
-    let P25 = document.getElementById('p2-5')
-    let P26 = document.getElementById('p2-6')
+    // let P21 = document.getElementById('p2-1')
+    // let P22 = document.getElementById('p2-2')
+    // let P23 = document.getElementById('p2-3')
+    // let P24 = document.getElementById('p2-4')
+    // let P25 = document.getElementById('p2-5')
+    // let P26 = document.getElementById('p2-6')
 
-    let P31 = document.getElementById('p3-1')
-    let P32 = document.getElementById('p3-2')
-    let P33 = document.getElementById('p3-3')
-    let P34 = document.getElementById('p3-4')
-    let P35 = document.getElementById('p3-5')
+    // let P31 = document.getElementById('p3-1')
+    // let P32 = document.getElementById('p3-2')
+    // let P33 = document.getElementById('p3-3')
+    // let P34 = document.getElementById('p3-4')
+    // let P35 = document.getElementById('p3-5')
 
-    let P41 = document.getElementById('p4-1')
-    let P42 = document.getElementById('p4-2')
-    let P43 = document.getElementById('p4-3')
-    let P44 = document.getElementById('p4-4')
-    let P45 = document.getElementById('p4-5')
+    // let P41 = document.getElementById('p4-1')
+    // let P42 = document.getElementById('p4-2')
+    // let P43 = document.getElementById('p4-3')
+    // let P44 = document.getElementById('p4-4')
+    // let P45 = document.getElementById('p4-5')
 
-    LightEffect(startpos)
+    // LightEffect(startpos)
 
-    LightEffect(store1)
-    LightEffect(store2)
-    LightEffect(store3)
+    // LightEffect(store1)
+    // LightEffect(store2)
+    // LightEffect(store3)
 
-    LightEffect(A1)
-    LightEffect(A2)
-    LightEffect(B1)
-    LightEffect(B2)
-    LightEffect(B3)
-    LightEffect(C1)
-    LightEffect(C2)
-    LightEffect(C3)
+    // LightEffect(A1)
+    // LightEffect(A2)
+    // LightEffect(B1)
+    // LightEffect(B2)
+    // LightEffect(B3)
+    // LightEffect(C1)
+    // LightEffect(C2)
+    // LightEffect(C3)
 
-    LightEffect(P11)
-    LightEffect(P12)
-    LightEffect(P13)
-    LightEffect(P14)
-    LightEffect(P15)
-    LightEffect(P16)
-    LightEffect(P17)
+    // LightEffect(P11)
+    // LightEffect(P12)
+    // LightEffect(P13)
+    // LightEffect(P14)
+    // LightEffect(P15)
+    // LightEffect(P16)
+    // LightEffect(P17)
 
-    LightEffect(P21)
-    LightEffect(P22)
-    LightEffect(P23)
-    LightEffect(P24)
-    LightEffect(P25)
-    LightEffect(P26)
+    // LightEffect(P21)
+    // LightEffect(P22)
+    // LightEffect(P23)
+    // LightEffect(P24)
+    // LightEffect(P25)
+    // LightEffect(P26)
 
-    LightEffect(P31)
-    LightEffect(P32)
-    LightEffect(P33)
-    LightEffect(P34)
-    LightEffect(P35)
+    // LightEffect(P31)
+    // LightEffect(P32)
+    // LightEffect(P33)
+    // LightEffect(P34)
+    // LightEffect(P35)
 
-    LightEffect(P41)
-    LightEffect(P42)
-    LightEffect(P43)
-    LightEffect(P44)
-    LightEffect(P45)
+    // LightEffect(P41)
+    // LightEffect(P42)
+    // LightEffect(P43)
+    // LightEffect(P44)
+    // LightEffect(P45)
+
+    // function LightEffect(Light) {
+    //     // let isLight = false
+    //     // isLight = !isLight;
+    //     // console.log(isLight)
+
+    //     // if (isLight) {
+    //     //     let lighter = false;
+    //     //     let time = setInterval(function () {
+    //     //         lighter = !lighter;
+
+    //     //         if (lighter) {
+    //     //             // Light.style.background = "#ff0000"
+    //     //             Light.style.boxShadow = "0 0 0 0";
+
+    //     //         } else {
+    //     //             // Light.style.background = "#ffff00"
+    //     //             Light.style.boxShadow = "0 0 10px 10px #ffffff";
+    //     //         }
+    //     //     }, 1000);
+    //     }
+    // }
     //#endregion
 
-    function LightEffect(Light) {
-        // let isLight = false
-        // isLight = !isLight;
+    const [isLight, setIsLight] = useState(false);
 
-        // if (isLight) {
-        //     //是否更明亮（白光） 默認否
-        //     let lighter = false;
-        //     let time = setInterval(function () {
-        //         lighter = !lighter;
+    // For Test
+    // const handleClick = () => {
+    //     setIsLight(current => !current);
+    //     console.log('isLight : ', isLight)
+    // }
 
-        //         if (lighter) {
-        //             // Light.style.background = "#ff0000"
-        //             Light.style.boxShadow = "0 0 0 0";
+    // const [count, setCount] = useState(0);
 
-        //         } else {
-        //             // Light.style.background = "#ffff00"
-        //             Light.style.boxShadow = "0 0 10px 10px #ffffff";
-        //         }
-        //     }, 1000);
-        //     // console.log(time)
-        // }
-    }
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         setCount(prevCount => prevCount + 1);
+    //     }, 1000);
+    // }, []);
+
+
+    useEffect(() => {
+        setInterval(() => {
+            console.log('- Use Effect -')
+            // setIsLight(isLight => !isLight);
+            // console.log('isLight : ', isLight)
+        }, 1000);
+    }, []);
+
+
     return (
 
         <div className="item_layout">
@@ -118,7 +146,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_1_3">
-                <canvas className="point" id="p4-1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p4-1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_1_4">
                 <canvas className="line-hor"></canvas>
@@ -130,7 +158,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_1_7">
-                <canvas className="point" id="p3-1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p3-1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_1_8">
                 <canvas className="line-hor"></canvas>
@@ -148,7 +176,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_1_13">
-                <canvas className="point" id="p2-1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p2-1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_1_14">
                 <canvas className="line-hor"></canvas>
@@ -169,7 +197,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_1_20">
-                <canvas className="point" id="p1-1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-1"></canvas>
             </div>
 
 
@@ -242,7 +270,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_3">
-                <canvas className="point" id="p4-2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p4-2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_4">
 
@@ -293,7 +321,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_20">
-                <canvas className="point" id="p1-2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-2"></canvas>
             </div>
 
 
@@ -377,7 +405,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_5_7">
-                <canvas className="point" id="p3-2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p3-2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_5_8">
 
@@ -417,7 +445,7 @@ const Graph = () => {
                 <span className="textarea">S1</span>
             </div>
             <div className="item_layout_grid item_layout_5_20">
-                <canvas className="point" id="p1-3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-3"></canvas>
             </div>
 
             <div className="item_layout_grid item_layout_6_1">
@@ -479,7 +507,7 @@ const Graph = () => {
                 <span className="textarea">S2</span>
             </div>
             <div className="item_layout_grid item_layout_6_20">
-                <canvas className="point" id="p1-4"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-4"></canvas>
             </div>
 
             <div className="item_layout_grid item_layout_7_1">
@@ -541,7 +569,7 @@ const Graph = () => {
                 <span className="textarea">S3</span>
             </div>
             <div className="item_layout_grid item_layout_7_20">
-                <canvas className="point" id="p1-5"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-5"></canvas>
             </div>
 
             <div className="item_layout_grid item_layout_8_1">
@@ -581,7 +609,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_8_13">
-                <canvas className="point" id="p2-2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p2-2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_8_14">
                 <canvas className="line-hor"></canvas>
