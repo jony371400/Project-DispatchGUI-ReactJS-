@@ -13,7 +13,9 @@ import Home from './pages/home/index'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
-    <Home></Home>
-  </React.StrictMode>
+  // This comments avoid Hooks[useEffect] execute twice
+  // <React.StrictMode>
+  //   <Home></Home>
+  // </React.StrictMode>
+  <Home></Home>
 );

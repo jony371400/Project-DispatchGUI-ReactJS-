@@ -130,8 +130,7 @@ const Graph = () => {
     useEffect(() => {
         setInterval(() => {
             console.log('- Use Effect -')
-            // setIsLight(isLight => !isLight);
-            // console.log('isLight : ', isLight)
+            setIsLight(isLight => !isLight);
         }, 1000);
     }, []);
 
@@ -264,7 +263,7 @@ const Graph = () => {
 
 
             <div className="item_layout_grid item_layout_3_1">
-                <canvas className="station" id="C1"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_2">
                 <canvas className="line-hor"></canvas>
@@ -312,7 +311,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_3_17">
-                <canvas className="station" id="start"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="start"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_18">
                 <canvas className="line-hor"></canvas>
@@ -399,7 +398,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_5_5">
-                <canvas className="station" id="B1"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_5_6">
                 <canvas className="line-hor"></canvas>
@@ -438,7 +437,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_5_18">
-                <canvas className="station" id="store1"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_5_19">
                 <canvas className="line-hor"></canvas>
@@ -500,7 +499,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_6_18">
-                <canvas className="station" id="store2"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_6_19">
                 <canvas className="line-hor"></canvas>
@@ -562,7 +561,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_7_18">
-                <canvas className="station" id="store3"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_7_19">
                 <canvas className="line-hor"></canvas>
@@ -615,7 +614,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_8_15">
-                <canvas className="station" id="A1"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="A1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_8_16">
 
@@ -634,25 +633,25 @@ const Graph = () => {
             </div>
 
             <div className="item_layout_grid item_layout_9_1">
-                <canvas className="station" id="C2"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_2">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_3">
-                <canvas className="point" id="p4-3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p4-3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_4">
 
             </div>
             <div className="item_layout_grid item_layout_9_5">
-                <canvas className="station" id="B2"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_6">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_7">
-                <canvas className="point" id="p3-3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p3-3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_8">
 
@@ -756,13 +755,13 @@ const Graph = () => {
             </div>
 
             <div className="item_layout_grid item_layout_11_1">
-                <canvas className="station" id="C3"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_11_2">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_11_3">
-                <canvas className="point" id="p4-4"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p4-4"></canvas>
             </div>
             <div className="item_layout_grid item_layout_11_4">
 
@@ -890,13 +889,13 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_13_5">
-                <canvas className="station" id="B3"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_6">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_7">
-                <canvas className="point" id="p3-4"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p3-4"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_8">
 
@@ -914,13 +913,13 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_13_13">
-                <canvas className="point" id="p2-3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p2-3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_14">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_15">
-                <canvas className="station" id="A2"></canvas>
+                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="A2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_16">
 
@@ -1006,7 +1005,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_15_3">
-                <canvas className="point" id="p4-5"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p4-5"></canvas>
             </div>
             <div className="item_layout_grid item_layout_15_4">
                 <canvas className="line-hor"></canvas>
@@ -1018,13 +1017,13 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_15_7">
-                <canvas className="point" id="p3-5"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p3-5"></canvas>
             </div>
             <div className="item_layout_grid item_layout_15_8">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_15_9">
-                <canvas className="point" id="p2-6"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p2-6"></canvas>
             </div>
             <div className="item_layout_grid item_layout_15_10">
 
@@ -1057,7 +1056,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_15_20">
-                <canvas className="point" id="p1-6"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-6"></canvas>
             </div>
 
             <div className="item_layout_grid item_layout_16_1">
@@ -1152,13 +1151,13 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_17_11">
-                <canvas className="point" id="p2-5"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p2-5"></canvas>
             </div>
             <div className="item_layout_grid item_layout_17_12">
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_17_13">
-                <canvas className="point" id="p2-4"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p2-4"></canvas>
             </div>
             <div className="item_layout_grid item_layout_17_14">
                 <canvas className="line-hor"></canvas>
@@ -1173,7 +1172,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_17_18">
-                <canvas className="point" id="p1-7"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="point" id="p1-7"></canvas>
             </div>
             <div className="item_layout_grid item_layout_17_19">
 
