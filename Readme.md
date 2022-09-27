@@ -4,4 +4,4 @@
 * Only GUI & Frontend function
 ```
 
-![image](https://github.com/jony371400/Project-DispatchGUI-ReactJS-/blob/master/Demo.gif)
+![image](https://github.com/jony371400/Project-DispatchGUI(ReactJS)/blob/master/Demo.gif)
