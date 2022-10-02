@@ -1,145 +1,52 @@
 import React, { useState, useEffect } from 'react';
+import webSocket from 'socket.io-client'
 
 const Graph = () => {
 
-    //#region Old Method to Chage CSS 
-    // let startpos = document.getElementById('start')
-
-    // let store1 = document.getElementById('store1')
-    // let store2 = document.getElementById('store2')
-    // let store3 = document.getElementById('store3')
-
-    // let A1 = document.getElementById('A1')
-    // let A2 = document.getElementById('A2')
-    // let B1 = document.getElementById('B1')
-    // let B2 = document.getElementById('B2')
-    // let B3 = document.getElementById('B3')
-    // let C1 = document.getElementById('C1')
-    // let C2 = document.getElementById('C2')
-    // let C3 = document.getElementById('C3')
-
-    // let P11 = document.getElementById('p1-1')
-    // let P12 = document.getElementById('p1-2')
-    // let P13 = document.getElementById('p1-3')
-    // let P14 = document.getElementById('p1-4')
-    // let P15 = document.getElementById('p1-5')
-    // let P16 = document.getElementById('p1-6')
-    // let P17 = document.getElementById('p1-7')
-
-    // let P21 = document.getElementById('p2-1')
-    // let P22 = document.getElementById('p2-2')
-    // let P23 = document.getElementById('p2-3')
-    // let P24 = document.getElementById('p2-4')
-    // let P25 = document.getElementById('p2-5')
-    // let P26 = document.getElementById('p2-6')
-
-    // let P31 = document.getElementById('p3-1')
-    // let P32 = document.getElementById('p3-2')
-    // let P33 = document.getElementById('p3-3')
-    // let P34 = document.getElementById('p3-4')
-    // let P35 = document.getElementById('p3-5')
-
-    // let P41 = document.getElementById('p4-1')
-    // let P42 = document.getElementById('p4-2')
-    // let P43 = document.getElementById('p4-3')
-    // let P44 = document.getElementById('p4-4')
-    // let P45 = document.getElementById('p4-5')
-
-    // LightEffect(startpos)
-
-    // LightEffect(store1)
-    // LightEffect(store2)
-    // LightEffect(store3)
-
-    // LightEffect(A1)
-    // LightEffect(A2)
-    // LightEffect(B1)
-    // LightEffect(B2)
-    // LightEffect(B3)
-    // LightEffect(C1)
-    // LightEffect(C2)
-    // LightEffect(C3)
-
-    // LightEffect(P11)
-    // LightEffect(P12)
-    // LightEffect(P13)
-    // LightEffect(P14)
-    // LightEffect(P15)
-    // LightEffect(P16)
-    // LightEffect(P17)
-
-    // LightEffect(P21)
-    // LightEffect(P22)
-    // LightEffect(P23)
-    // LightEffect(P24)
-    // LightEffect(P25)
-    // LightEffect(P26)
-
-    // LightEffect(P31)
-    // LightEffect(P32)
-    // LightEffect(P33)
-    // LightEffect(P34)
-    // LightEffect(P35)
-
-    // LightEffect(P41)
-    // LightEffect(P42)
-    // LightEffect(P43)
-    // LightEffect(P44)
-    // LightEffect(P45)
-
-    // function LightEffect(Light) {
-    //     // let isLight = false
-    //     // isLight = !isLight;
-    //     // console.log(isLight)
-
-    //     // if (isLight) {
-    //     //     let lighter = false;
-    //     //     let time = setInterval(function () {
-    //     //         lighter = !lighter;
-
-    //     //         if (lighter) {
-    //     //             // Light.style.background = "#ff0000"
-    //     //             Light.style.boxShadow = "0 0 0 0";
-
-    //     //         } else {
-    //     //             // Light.style.background = "#ffff00"
-    //     //             Light.style.boxShadow = "0 0 10px 10px #ffffff";
-    //     //         }
-    //     //     }, 1000);
-    //     }
-    // }
-    //#endregion
-
     const [isLight, setIsLight] = useState(false);
+    const [ws, setWs] = useState(null)
 
-    // For Test
-    // const handleClick = () => {
-    //     setIsLight(current => !current);
-    //     console.log('isLight : ', isLight)
-    // }
-
-    // const [count, setCount] = useState(0);
-
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         setCount(prevCount => prevCount + 1);
-    //     }, 1000);
-    // }, []);
-
+    const connectWebSocket = () => {
+        setWs(webSocket('http://localhost:3001'))
+    }
 
     useEffect(() => {
         setInterval(() => {
             console.log('- Use Effect -')
             setIsLight(isLight => !isLight);
-        }, 1000);
-    }, []);
+        }, 1500);
 
+        if (ws) {
+            console.log('success connect!')
+            initWebSocket()
+        }
+    });
+
+    const initWebSocket = () => {
+        ws.on('getMessage', message => {
+            console.log('getMessage', message)
+        })
+
+        ws.on('getMessageAll', message => {
+            console.log('getMessageAll', message)
+        })
+
+        ws.on('getMessageLess', message => {
+            console.log('getMessageLess', message)
+        })
+    }
+
+    const sendMessage = (name) => {
+        ws.emit(name, '收到訊息囉！')
+        console.log('Send MSG -> ')
+    }
 
     return (
 
         <div className="item_layout">
 
             <div className="item_layout_grid item_layout_1_1">
+
             </div>
             <div className="item_layout_grid item_layout_1_2">
 
@@ -263,7 +170,7 @@ const Graph = () => {
 
 
             <div className="item_layout_grid item_layout_3_1">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_2">
                 <canvas className="line-hor"></canvas>
@@ -311,7 +218,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_3_17">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="start"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="start"></canvas>
             </div>
             <div className="item_layout_grid item_layout_3_18">
                 <canvas className="line-hor"></canvas>
@@ -398,7 +305,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_5_5">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_5_6">
                 <canvas className="line-hor"></canvas>
@@ -437,7 +344,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_5_18">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_5_19">
                 <canvas className="line-hor"></canvas>
@@ -499,7 +406,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_6_18">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_6_19">
                 <canvas className="line-hor"></canvas>
@@ -561,7 +468,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_7_18">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="store3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_7_19">
                 <canvas className="line-hor"></canvas>
@@ -614,7 +521,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_8_15">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="A1"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="A1"></canvas>
             </div>
             <div className="item_layout_grid item_layout_8_16">
 
@@ -633,7 +540,7 @@ const Graph = () => {
             </div>
 
             <div className="item_layout_grid item_layout_9_1">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_2">
                 <canvas className="line-hor"></canvas>
@@ -645,7 +552,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_9_5">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_9_6">
                 <canvas className="line-hor"></canvas>
@@ -755,7 +662,7 @@ const Graph = () => {
             </div>
 
             <div className="item_layout_grid item_layout_11_1">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="C3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_11_2">
                 <canvas className="line-hor"></canvas>
@@ -889,7 +796,7 @@ const Graph = () => {
 
             </div>
             <div className="item_layout_grid item_layout_13_5">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B3"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="B3"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_6">
                 <canvas className="line-hor"></canvas>
@@ -919,7 +826,7 @@ const Graph = () => {
                 <canvas className="line-hor"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_15">
-                <canvas  style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="A2"></canvas>
+                <canvas style={{ boxShadow: isLight ? '0 0 10px 10px #ffffff' : '0 0 0 0' }} className="station" id="A2"></canvas>
             </div>
             <div className="item_layout_grid item_layout_13_16">
 
@@ -1363,7 +1270,19 @@ const Graph = () => {
             <div className="item_layout_grid item_layout_20_20">
 
             </div>
+
+            <div>
+                <input type='button' value='連線' onClick={connectWebSocket} />
+                <input type='button' value='送出訊息，只有自己收到回傳' onClick={() => { sendMessage('getMessage') }} />
+                <br></br>
+
+                <input type='button' value='送出訊息，讓所有人收到回傳' onClick={() => { sendMessage('getMessageAll') }} />
+                <br></br>
+
+                <input type='button' value='送出訊息，除了自己外所有人收到回傳' onClick={() => { sendMessage('getMessageLess') }} />
+            </div>
         </div>
+
     );
 };
 
