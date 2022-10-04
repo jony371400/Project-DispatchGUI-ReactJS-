@@ -10,16 +10,23 @@ const Graph = () => {
         setWs(webSocket('http://localhost:3001'))
     }
 
+    // let init = true
     useEffect(() => {
-        setInterval(() => {
-            console.log('- Use Effect -')
-            setIsLight(isLight => !isLight);
-        }, 1500);
+        // if (init) {
+        //     setInterval(() => {
+        //         
+        //         setIsLight(isLight => !isLight);
+        //     }, 1500);
+
+        //     init = false
+        // }
 
         if (ws) {
             console.log('success connect!')
             initWebSocket()
         }
+
+        console.log('- Use Effect -')
     });
 
     const initWebSocket = () => {
@@ -37,7 +44,7 @@ const Graph = () => {
     }
 
     const sendMessage = (name) => {
-        ws.emit(name, '收到訊息囉！')
+        ws.emit(name, 'MSG')
         console.log('Send MSG -> ')
     }
 
