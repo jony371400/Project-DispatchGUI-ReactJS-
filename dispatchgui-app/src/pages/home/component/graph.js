@@ -14,10 +14,8 @@ const Graph = () => {
     useEffect(() => {
         // if (init) {
         //     setInterval(() => {
-        //         
         //         setIsLight(isLight => !isLight);
         //     }, 1500);
-
         //     init = false
         // }
 
