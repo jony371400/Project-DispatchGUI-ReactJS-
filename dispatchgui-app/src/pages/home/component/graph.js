@@ -6,18 +6,6 @@ const Graph = () => {
     const [isLight, setIsLight] = useState(false);
     const [ws, setWs] = useState(null)
 
-    const connectWebSocket = () => {
-        setWs(webSocket('http://localhost:3001'))
-    }
-
-    const PageLoad = () => {
-        console.log('PageLoad')
-
-        setInterval(() => {
-            setIsLight(isLight => !isLight);
-        }, 1500);
-    }
-
     useEffect(() => {
         if (ws) {
             console.log('success connect!')
@@ -26,7 +14,21 @@ const Graph = () => {
 
         window.addEventListener('load', PageLoad)
         console.log('- Use Effect -')
-    },[]);
+    }, [ws]);
+
+    const PageLoad = () => {
+        console.log('PageLoad')
+        
+        connectWebSocket()
+
+        setInterval(() => {
+            setIsLight(isLight => !isLight);
+        }, 1500);
+    }
+
+    const connectWebSocket = () => {
+        setWs(webSocket('http://localhost:3001'))
+    }
 
     const initWebSocket = () => {
         ws.on('getMessage', message => {
