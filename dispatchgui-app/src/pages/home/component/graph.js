@@ -10,22 +10,23 @@ const Graph = () => {
         setWs(webSocket('http://localhost:3001'))
     }
 
-    // let init = true
-    useEffect(() => {
-        // if (init) {
-        //     setInterval(() => {
-        //         setIsLight(isLight => !isLight);
-        //     }, 1500);
-        //     init = false
-        // }
+    const PageLoad = () => {
+        console.log('PageLoad')
 
+        setInterval(() => {
+            setIsLight(isLight => !isLight);
+        }, 1500);
+    }
+
+    useEffect(() => {
         if (ws) {
             console.log('success connect!')
             initWebSocket()
         }
 
+        window.addEventListener('load', PageLoad)
         console.log('- Use Effect -')
-    });
+    },[]);
 
     const initWebSocket = () => {
         ws.on('getMessage', message => {
